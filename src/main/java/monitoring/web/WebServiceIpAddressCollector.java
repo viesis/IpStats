@@ -26,13 +26,12 @@ class WebServiceIpAddressCollector implements IpAddressCollector {
 
     private IpCount currentIpCount(String ipAddress) {
         IpCount currentIpCount = ipCache.getIfPresent(ipAddress);
-        if (currentIpCount != null) {
-            return currentIpCount;
-        }
+        return currentIpCount != null ? currentIpCount : initNewIpCount(ipAddress);
+    }
 
+    private IpCount initNewIpCount(String ipAddress) {
         IpCount newIpCount = new IpCount(ipAddress);
         ipCache.put(ipAddress, newIpCount);
-
         return newIpCount;
     }
 
