@@ -44,7 +44,6 @@ class WebServiceIpAddressCollectorSpec extends Specification {
 
         then:
         ipAddressCollector.getTop(100).size() == 100
-        ipAddressCollector.getTop(2000).size() == 1000
     }
 
     def "all ip addresses are returned when top addresses are fewer than specified"() {
